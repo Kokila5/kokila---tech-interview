@@ -1,0 +1,358 @@
+1.Write code for handling multiple windows
+
+package Technical_Task;
+import java.util.Set;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WindowType;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+public class Answer_1 
+{
+	public static void main(String[] args) 
+	{
+		System.setProperty("webdriver.edge.driver","C:\\Eclipse\\Automation\\Driver\\msedgedriver.exe");
+		WebDriver driver=new EdgeDriver();
+		//Single Window
+		driver.get("https://www.google.com/");
+		String Home_Page=driver.getWindowHandle();
+		System.out.println("Home Main Page in the Browser = "+Home_Page);
+		//Multiple Windows
+		driver.switchTo().newWindow(WindowType.TAB);
+		driver.get("https://www.youtube.com/");
+		driver.switchTo().newWindow(WindowType.TAB);
+		driver.get("https://www.gmail.com/");
+		Set <String> All_Pages=driver.getWindowHandles();
+		System.out.println("All Pages in the Browser = "+All_Pages);
+	}
+
+2.Write code for positive and negative scenarios for Alerts	
+
+package Technical_Task;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WindowType;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+public class Answer_2 
+{
+	public static void main(String[] args) 
+	{
+		System.setProperty("webdriver.edge.driver","C:\\Eclipse\\Automation\\Driver\\msedgedriver.exe");
+		WebDriver dr=new EdgeDriver();
+		dr.get("https://the-internet.herokuapp.com/javascript_alerts");
+		//Positive alert
+		dr.findElement(By.xpath("//button[@onclick='jsConfirm()']")).click();
+		dr.switchTo().alert().accept();
+		//Negative alert
+		dr.switchTo().newWindow(WindowType.TAB);
+		dr.get("https://the-internet.herokuapp.com/javascript_alerts");
+		dr.findElement(By.xpath("//button[@onclick='jsConfirm()']")).click();
+		dr.switchTo().alert().dismiss();
+		}
+}
+
+3.Write code for Cross Browser Testing
+
+package Technical_Task;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import io.github.bonigarcia.wdm.WebDriverManager;
+public class Answer_3 
+{
+	public static void main(String[] args) 
+	{
+		//Cross Browser Testing with different Methods
+		//Launching Edge Browser with WebDriver
+		System.setProperty("webdriver.edge.driver","C:\\Eclipse\\Automation\\Driver\\msedgedriver.exe");
+		WebDriver driver1=new EdgeDriver();
+		driver1.get("https://www.google.com/");
+		
+		//Launching Chrome Browser with ChromeOptions
+		ChromeOptions options1=new ChromeOptions();
+		options1.addArguments("--remote-allow-origins=*");
+		WebDriver driver2=new ChromeDriver(options1);
+		driver2.get("https://www.google.com/");
+		
+		//Launching Firefox Browser with FirefoxOptions
+		FirefoxOptions options2=new FirefoxOptions();
+		WebDriver driver3=new FirefoxDriver(options2);
+		driver3.get("https://www.google.com/");
+		
+		//Launching Browser using WebDriverAPI Manager
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver4=new ChromeDriver(options1);
+		driver4.get("https://www.google.com/");
+	}
+}
+
+
+4.Write code for handling Frames
+
+package Technical_Task;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+
+public class Answer_4 {
+
+	public static void main(String[] args) throws InterruptedException 
+	{
+		System.setProperty("webdriver.edge.driver","C:\\Eclipse\\Automation\\Driver\\msedgedriver.exe");
+		WebDriver dr=new EdgeDriver();
+		dr.get("https://leafground.com/frame.xhtml");
+		//Total Frames
+		int size=dr.findElements(By.tagName("iframe")).size();
+		System.out.println("Total Frames= "+size);
+		//Handling a Frame
+		dr.switchTo().frame(0);
+		dr.findElement(By.id("Click")).click();
+	}
+}
+
+
+5.Automate Menu and Sub Menu and click on a link in Sub Menu and navigate to the page and click on an element			
+
+package Technical_Task;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.edge.EdgeDriver;
+public class Answer_5 
+{
+	public static void main(String[] args)
+	{
+		System.setProperty("webdriver.edge.driver","C:\\Eclipse\\Automation\\Driver\\msedgedriver.exe");
+		WebDriver dr=new EdgeDriver();
+		dr.get("http://tutorialsninja.com/demo/index.php?route=common/home");
+		//Automating Menu
+		WebElement Menu=dr.findElement(By.xpath("//a[@title='My Account']"));
+		Menu.click();
+		//Automating Sub Menu containing Link
+		WebElement Sub_Menu=dr.findElement(By.xpath("(//a[contains(@href,\"login\")])[1]"));
+		Sub_Menu.click();
+		//Clicking on Element
+		WebElement Link=dr.findElement(By.xpath("(//a[contains(@href,\"register\")])[2]"));
+		Link.click();
+	}
+}
+
+6.Select multiple options from the dropdown
+
+package Technical_Task;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.support.ui.Select;
+public class Answer_6 
+{
+	public static void main(String[] args) 
+	{
+		System.setProperty("webdriver.edge.driver","C:\\Eclipse\\Automation\\Driver\\msedgedriver.exe");
+		WebDriver dr=new EdgeDriver();
+		dr.get("http://only-testing-blog.blogspot.com/");
+		WebElement element=dr.findElement(By.name("FromLB"));
+		Select select=new Select(element);
+		//Multiple Select Check
+		boolean check=select.isMultiple();
+		System.out.println("Multiple selecting option availability="+check);
+		//Multiple Selecting Options
+		select.selectByValue("Russia");
+		select.selectByVisibleText("Japan");
+		select.selectByIndex(4);
+		select.selectByIndex(6);
+		
+	}
+}
+
+7.How to do file upload in Selenium?
+
+Methods To Upload Files In Selenium
+1) Using sendKeys method
+2) Using AutoIT
+3) With The Help Of Robot Class
+
+8.Write code for taking Screenshot
+
+package Technical_Task;
+import java.io.File;
+import java.io.IOException;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import com.google.common.io.Files;
+public class Answer_8 
+{
+	public static void main(String[] args) throws IOException 
+	{
+		System.setProperty("webdriver.edge.driver","C:\\Eclipse\\Automation\\Driver\\msedgedriver.exe");
+		WebDriver dr=new EdgeDriver();
+		dr.get("https://www.google.com/");
+		File f = ((TakesScreenshot)dr).getScreenshotAs(OutputType.FILE);
+		Files.copy(f,new File("C:\\Eclipse\\Output\\image.jpeg"));
+	}
+}
+
+9.Read data from Excel and given that data as input for login and password and click on submit and validate the popup which says Login is successful	
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
+import org.apache.poi.ss.usermodel.*;
+
+import java.io.File;
+import java.io.IOException;
+
+public class LoginTest {
+    
+    @Test
+    public void loginTest() throws IOException {
+        // Set the path of the Excel file
+        String excelFilePath = "data.xlsx";
+        File file = new File(excelFilePath);
+        FileInputStream inputStream = new FileInputStream(file);
+
+        // Load the workbook
+        Workbook workbook = WorkbookFactory.create(inputStream);
+
+        // Get the sheet and the row count
+        Sheet sheet = workbook.getSheet("Sheet1");
+        int rowCount = sheet.getLastRowNum() - sheet.getFirstRowNum();
+
+        // Launch the browser and navigate to the login page
+        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://example.com/login");
+
+        // Loop through each row in the Excel sheet
+        for (int i = 1; i <= rowCount; i++) {
+            // Get the login credentials from the Excel row
+            Row row = sheet.getRow(i);
+            String login = row.getCell(0).getStringCellValue();
+            String password = row.getCell(1).getStringCellValue();
+
+            // Enter the login credentials and click the login button
+            WebElement loginInput = driver.findElement(By.id("login"));
+            WebElement passwordInput = driver.findElement(By.id("password"));
+            WebElement submitButton = driver.findElement(By.id("submit"));
+            loginInput.sendKeys(login);
+            passwordInput.sendKeys(password);
+            submitButton.click();
+
+            // Wait for the login success popup to appear and validate its text
+            WebDriverWait wait = new WebDriverWait(driver, 10);
+            WebElement successPopup = wait.until(ExpectedConditions.presenceOfElementLocated(By.className("success-popup")));
+            String successMessage = successPopup.getText();
+            assert successMessage.equals("Login successful");
+        }
+
+        // Close the browser
+        driver.quit();
+    }
+}
+
+10.Write test scenario for Credit Cards
+
+UI Credit Card Test Cases
+*Check whether the bank appears over the credit card.
+*Check if the logo of the respective bank is displayed.
+*Check the type of the credit card logo is displaying properly. Example: Visa, Mastercard.
+*Check if the Credit card number is displaying clearly.
+*Check if the expiration date is visible.
+*Check whether the CVV number is displayed clearly on the backside of the card.
+*Check whether the user name is displaying properly.
+*Check if the color of the credit card is as per the requirement document.
+*Check if the credit card size (length & width) is as per the requirement.
+*Check the wifi symbol is displaying properly on the credit card.
+*Check if the magnetic stripe width is displaying as per the requirement.
+*Check if the Hologram is displaying over the card.
+*Check if the weight of the cards is as per the document specification.
+
+Test Cases For Credit Card Payment
+*Check the maximum credit limit of the card.
+*Check the maximum withdrawal limit of the credit card.
+*Check whether international transactions are allowed on the card or not.
+*Check whether domestic transactions are allowed or not.
+*Check if the user can withdraw cash using the credit card or not.
+*Check users can withdraw cash by using a valid pin.
+*Check user can withdraw cash by using an invalid pin.
+*Check that you can void a payment before posting it and that after posting a payment, voiding is not allowed.
+*Negative Credit Card Testing Scenarios / Negative Test Cases for Credit Card Payment
+*Check if the user can perform the transaction with an invalid pin.
+*Check the user should not allow performing any transaction after the maximum limit.
+
+Test Case For Credit Card Application Processing
+*Check the valid card number and check whether the Credit Card is valid.
+*Check for the expiry month and expiry year.
+*Check for the three-digit CVC pin is valid or not.
+*Check with an invalid card number
+*Check with an invalid CVC number.
+*Check for the valid user(number).
+*Check for his/her last login (whether that falls within the quota, the date after his bill was sent)
+*Check for the balance amount that he can access from the allowed one(say Rs.10,000 or 50,000 and the amount that he/she needs for the current transaction.
+*Check for the Account holder’s Name on the Credit Card
+*Check for the expiration date on the card.
+*Check with past expiration months and year
+*Check card field accepts characters
+*The amount will be detected only when all the details are correct
+*If any card details fail, it should throw an error message
+*The transaction will be declined when a card does not have enough balance in their account
+*Checking with a valid card and valid pin.
+*Checking with a valid card and an invalid pin
+*Checking with invalid cards and pin
+*Check how much the balance is on the Card is.
+*Check the Credit Card Verification number on the card.
+*Check for the Credit Card Payment Due Date
+
+11.Write code for handling multiple browsers and switch to new windows?	
+
+package Technical_Task;
+
+public class Answer_11 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
+
+12.How to shift between tabs of the same browser using selenium?	
+
+senkeys(),switchTo() methods are used to shift between tabs of the same browser in selenium
+
+13.How to perform upload files using selenium?
+
+Uploading files in Selenium, using multiple sendKeys() commands for each file.
+
+14.How to perform download files using selenium?	
+
+We can download any file and save it to the desired location with Selenium. This can be done by creating an instance of the FirefoxOptions class. Then with the help of the addPreference method, we have to set the browser preferences.
+
+15.How to find more than one web element in the list?	
+
+findElements() command in WebDriver can be used to find more than one web elements and save them into a list. 
+
+
+
+
+
+

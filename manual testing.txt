@@ -1,0 +1,166 @@
+Manual testing
+
+ 1)Write a Bug Report for a bug in the Whatsapp mobile application that is preventing users from sending video files in group chats.
+Bug Report in whatapp mobile application
+Step:
+*Open Whatsapp mobile application on any mobile device.
+*Create a new group chat with at least one participant.
+*Tap on the attachment icon to send a video file.
+*Select a video file from the gallery and tap on the send button.
+*Observe that the video file is not sent and an error message is displayed.	
+
+2)Write a bug report for a bug in the login page that the submit button is not working.
+    the submit button  on the login in pages is  is not wroking  .when the users clicks on the button , 
+nothing happens and the login  froms is not submitted
+Steps  for the report:
+*Open WhatsApp
+*Go to a chat
+*Click on the camera icon to access the camera feature
+*Allow the app to access the camera
+*Click on the "Take Picture" button	
+
+3) Write a bug report for any scenario of your own in wats app?
+
+	When attempting to access the camera feature in WhatsApp, the application crashes, preventing users from taking or sharing pictures within the app.
+
+Steps to Reproduce:
+
+*Open WhatsApp
+*Go to a chat
+*Click on the camera icon to access the camera feature
+*Allow the app to access the camera
+*Click on the "Take Picture" button
+
+4)Write a few testcases for booking tickers in redbus?
+ Test case1 :Successful booking of a one way ticket
+    Test Step: *open the redbus wensite
+               *enter the source
+               *click on search buses
+               *select the bus and set
+               *verify that the booking is sucessful
+ Test case2: Cancelling a booked ticket
+     Test step: *open the redbus website
+                *click on the "cancel Ticket option 
+                *verify that the correct booking details is displayed 
+                *click on cancel
+
+5)Write a bug report for profile picture not updated in whatsap
+
+Steps of the  profile picture not updated in whatsap bug report
+*Open WhatsApp and go to the profile section
+*Tap on the profile picture and select the option to update it
+*Choose a new picture from the device's gallery or take a new photo
+*Successfully upload the new profile picture
+*Go back to the profile section to confirm the changes
+
+ 6 )Write  a Bug Report for a bug in the Amazon website that is preventing users from adding Electronic items in the cart?
+   Steps to Reproduce:
+*Open the Amazon website 
+*search for an electronic item
+*Select the item 
+* click on the "Add to Cart" button
+*The button appears to be unresponsive, and the item is not added to the cart
+
+ 7)Write any 5 Negative testcases?
+ Negative testcase for Instagrame
+*Invalid Login Credentials
+*Posting on someone else's
+*Adding Invalid Friends
+*Uploading Unsupported File Formats: 
+*Sending Invalid 
+
+ 8)Write a few test cases for the IRCTC Web Application?
+ Steps: test cases for IRCTC web appliction
+  *Select the "Train Ticket" option from the menu.
+  *Click on the "Book Ticket" option.
+  *Enter the source, destination, date of travel, and other required details.
+  *Select the preferred train and class.
+  *Enter passenger details and make payment.
+
+ 9)Write a few test cases for the SpiceJet Web Application?
+     Test Case Name: Valid Login Preconditions: The user is registered with SpiceJet and has valid login credentials
+Steps:
+*Open the SpiceJet website and enter valid login credentials.
+*Click on the login button
+Expected Result: The user should be able to login successfully.
+ 
+10)Create 10 test case for amazon Website vie?
+Steps: Testcases for amazon website 
+   *Enter a valid search term in the search box and verify that relevant results are displayed.
+   *Enter an invalid search term in the search box and verify that the system displays a "No results found" message.
+   *Click on a product from the search results page and verify that the product page is displayed correctly.
+   *Verify that the product description, images, and pricing are displayed correctly.
+   *Verify that the product reviews and ratings are displayed correctly.
+   *Click on the "Add to Cart" button on the product page and verify that the item is added to the cart.
+   *Verify that the price and quantity of the item are displayed correctly in the cart.
+   *Click on the "Cart" icon in the header and verify that the cart page is displayed correctly.
+   *Verify that the items in the cart are displayed correctly, along with their prices and quantities.
+   *Verify that the "Proceed to Checkout" button is working.
+
+11.Create 10 gherkin test case for amazon website?
+
+1.Test Case Name: Add a product to cart
+Feature: Add to Cart
+Scenario: Adding a product to the cart on Amazon
+ Given I am on the product page for an item
+ When  I click the "Add to Cart" button
+  Then the item should be added to my cart
+
+ *Test Case Name: View product reviews
+Feature: View Product Reviews
+Scenario: Viewing product reviews on Amazon
+Given I am on the product page for an item
+When I scroll down to the reviews section
+Then I should see a list of reviews for the item
+
+ *Test Case Name: Add a product to a wishlist
+Feature: Add to Wishlist
+Scenario: Adding a product to the wishlist on Amazon
+Given I am on the product page for an item
+When I click "Add to Wishlist"
+Then the item should be added to my wishlist
+
+ *Test Case Name: View recommendations
+Feature: View Recommendations
+Scenario: Viewing recommended products on Amazon
+Given I am on the Amazon homepage
+When I scroll down to the "Recommended for You" section
+Then I should see a list of recommended products based on my browsing history
+
+ *Test Case Name: Track a package
+Feature: Track Package
+Scenario: Tracking a package on Amazon
+Given I have made a purchase on Amazon
+And the item has been shipped
+
+12.Create 10 test cases for amazon mobile view?
+Steps:
+
+  *Open the Amazon mobile app and verify that the navigation menu is displayed correctly.
+  *Click on each link in the navigation menu and verify that the links are working.
+  *Enter a valid search term in the search box and verify that relevant results are displayed.
+  *Enter an invalid search term in the search box and verify that the system displays a "No results found" message.
+  *Test Case Name: Product Page
+  *Click on a product from the search results page and verify that the product page is displayed correctly.
+  *Verify that the product description, images, and pricing are displayed correctly.
+  *Verify that the product reviews and ratings are displayed correctly.
+  *Test Case Name: Add to Cart
+  *Click on the "Add to Cart" button on the product page and verify that the item is added to the cart.
+
+13.Create 10 Bug report for amazon website and mobile view?
+
+1.Bug Report Name: Error in Search Functionality
+Description: The search functionality is not working properly on the Amazon website. When users enter a valid search term, no results are displayed.
+
+2.Bug Report Name: Missing Product Information
+Description: Some product information, such as product images and reviews, are missing from the product page on the Amazon website.
+
+3.Bug Report Name: Invalid Price Display
+Description: The prices of some products on the Amazon website are being displayed incorrectly. For example, a product with a price of $10 is being displayed as $100.
+
+4.Bug Report Name: Payment Gateway Error
+Description: When users try to make a payment on the Amazon website, they are encountering an error message and are unable to complete their transaction.
+
+5.Bug Report Name: Broken Links
+Description: There are broken links on the Amazon website, leading to 404 error pages when users click on them.
+

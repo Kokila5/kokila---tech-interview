@@ -1,0 +1,103 @@
+1.Scalar Functions
+Scalar functions are functions that operate on a single input value and return a single output value.
+Some of the commonly used scalar functions in SQL includes:
+*UCASE()
+*LCASE()
+*MID()
+*LENGTH()
+*ROUND()
+*NOW()
+*FORMAT()
+Query - Scalar Function
+SELECT UPPER('hello world') AS result;
+
+2.Joins
+Joins is used to combine rows from two or more tables based on a related column between them. There are several types of joins, including inner join, left join, right join, and full outer join. 
+Table 1: Customers
+CustomerID CustomerName	  ContactName Country
+1	     Alfreds        Maria	  Germany
+2	     Ana Trujillo	  Ana	        Mexico
+3	     Antonio	  Antonio	  Mexico
+4	     Around the HornThomas	  UK
+5	     Berglunds	  Christina	  Sweden
+Table 2: Orders
+OrderID	CustomerID	OrderDate
+1	           3	2022-03-01
+2	           1	2022-02-28
+3	           2	2022-03-02
+4	           2	2022-03-03
+5	           3	2022-03-04
+Inner Join
+SELECT Customers.CustomerName, Orders.OrderDate
+FROM Customers
+INNER JOIN Orders
+ON Customers.CustomerID = Orders.CustomerID;
+Output
+CustomerName	OrderDate
+Alfreds	      2022-02-28
+Ana Trujillo	2022-03-02
+Ana Trujillo	2022-03-03
+Antonio	      2022-03-01
+Antonio	      2022-03-04
+
+3.Query from renaming a Table Column
+ALTER TABLE table_name RENAME COLUMN old_column_name TO new_column_name;
+
+4.Query to find Duplicates
+SELECT email, COUNT(*) as count
+FROM employees
+GROUP BY email
+HAVING COUNT(*) > 1;
+
+5.DISTINCT Statement
+The way of using the Distinct Statement
+SELECT DISTINCT column1, column2, ...
+FROM table_name;
+uses - used to return only distinct (different) values.
+
+6.Remove Dulpicates
+duplicate records from a table by using the DISTINCT keyword in a SELECT statement or by using the DELETE statement with a subquery.
+Query - Remove Dulpicates
+SELECT DISTINCT column1, column2, column3
+INTO new_table
+FROM old_table;
+
+7.Print max salary for a particular department
+To print the maximum salary for a particular department, MAX function is used and the WHERE clause to filter the results by the department.
+Query - Max Salary
+SELECT MAX(salary) as max_salary
+FROM employees
+WHERE department = 'Sales';
+
+8.Use different operators in SQL 
+*Arithmetic operators - supports the operators like +, -, *, / for addition, subtraction, multiplication, and division.
+*Comparison operators - supports operators like =, <, >, <=, >=, <> for comparing values. 
+*Logical operators - supports operators like AND, OR, NOT for combining conditions. 
+*Like operator - for pattern matching.
+*In operator -  for matching a value against a list of possible values.
+
+9."What is Query to display first 5 Records from Employee table?"
+SELECT *
+FROM Employee
+LIMIT 5;
+
+10."What is Query to display last 5 Records from Employee table?"
+SELECT *
+FROM Employee
+ORDER BY EmployeeID DESC
+LIMIT 5;
+
+11."How to fetch 3rd highest salary using Rank Function"
+SELECT salary
+FROM (SELECT salary, RANK() OVER (ORDER BY salary DESC) AS salary_rank FROM Employee) AS temp WHERE salary_rank = 3;
+
+12."How Can i create table with same structure with data of Employee table?"
+use the CREATE TABLE statement with the LIKE clause.
+CREATE TABLE EmployeeCopy LIKE Employee;
+
+13."Find Query to get information of Employee where Employee is not assigned to the department"
+usage of LEFT JOIN between the Employee and Department tables, and then select the rows where the department information is NULL.
+SELECT Employee.*
+FROM Employee
+LEFT JOIN Department ON Employee.DepartmentID = Department.DepartmentID
+WHERE Department.DepartmentID IS NULL;
